@@ -17,7 +17,7 @@ readPaper <- function(file){
 #########################
 
 #Takes output from readPaper and a word (or a vector of words) and gives the frequency the frequency of the word
-    #Input:  A file and a word
+    #Input:  A filelist and a word
     #Output:  The frequency of the number
 wordCount <- function(filelist, word){
   sum(filelist == word)  #make a vector of Trues/Falses for every word.  Sum up the matches(trues).
@@ -27,7 +27,7 @@ wordCount <- function(filelist, word){
 #########################
 
 #Takes a word and output from readPaper and gives the starting character position of that word indexed from the beginning of the paper.
-    #Input:  A file and a word
+    #Input:  A filelist and a word
     #Output:  A vector of the index of the beginning of each word placement
 wordPlacement <- function(filelist, word){
   which(filelist == word)  #The which function gives the index of a logical object and outputs an array of indices.
@@ -37,7 +37,7 @@ wordPlacement <- function(filelist, word){
 #########################
 
 #Generates a frequency histogram of the 10 most frequent words in a file, can change the number of words most frequent words
-    #Input:  Filelist and the top X words, default 10
+    #Input:  A filelist and the top X words, default 10
     #Output:  An image of a histrogram
 wordHist <- function(filelist, top = 10){
   pap <- as.data.frame(table(filelist))  #Make a data frame of all words in the list and its count.
@@ -57,7 +57,7 @@ wordHist <- function(filelist, top = 10){
 #########################
 
 #Given a word, give the frequency of the words that follow it.
-    #Input:  File and a word
+    #Input:  A filelist and a word
     #Output: Vector of counts
 nextWord <- function(filelist, word){
   something <- which(filelist == word)  #Make a vector of indices of the occurences of the word of interest
@@ -73,7 +73,7 @@ nextWord <- function(filelist, word){
 #########################
 
 #  Given a word, give the freqency of words that preceed it
-    #Input:  File and a word
+    #Input:  A filelist and a word
     #Output:  Vector of Counts
 previousWord <- function(filelist, word){
   something <- which(filelist == word)  #Make a vector of indices of the occurences of the word of interest
@@ -89,7 +89,7 @@ previousWord <- function(filelist, word){
 #########################
 
 # This function takes a readPaper output filelist and outputs a histogram of the frequency of each letter in the alphabet
-    #Input:  File processed through readPaper
+    #Input:  A filelist
     #Output: Histogram of letter frequency
 surpriseMe <- function(filelist){
   letter_list <- toString(filelist) #Converts the list of words into a list of letters.
